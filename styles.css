@@ -736,6 +736,18 @@ ul {
     }
 }
 
+/* Depoimentos CTA */
+.depoimentos-cta {
+    text-align: center;
+    margin-top: var(--espacamento-lg);
+}
+
+.depoimentos-cta .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
 /* ===== SERVIÇOS SECTION ===== */
 .servicos {
     padding: var(--espacamento-xl) 0;
@@ -932,6 +944,26 @@ ul {
     color: var(--cor-verde);
 }
 
+.servicos-nao-realizados {
+    list-style: none;
+    padding: 0;
+    margin-top: var(--espacamento-sm);
+}
+
+.servicos-nao-realizados li {
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.servicos-nao-realizados li::before {
+    content: "✗";
+    position: absolute;
+    left: 0;
+    color: #dc2626;
+    font-weight: bold;
+}
+
 .servicos-cta {
     text-align: center;
     margin-top: var(--espacamento-lg);
@@ -988,6 +1020,54 @@ ul {
     color: var(--cor-laranja);
 }
 
+.instagram-info {
+    text-align: center;
+    margin-bottom: var(--espacamento-md);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.instagram-decoracao-antes,
+.instagram-decoracao-depois {
+    width: 80px;
+    height: auto;
+    opacity: 0.7;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.instagram-text {
+    font-size: 1.0625rem;
+    color: var(--cor-verde);
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.instagram-text a {
+    color: #E1306C;
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transicao-rapida);
+}
+
+.instagram-text a:hover {
+    color: var(--cor-laranja);
+    text-decoration: underline;
+}
+
 .instagram-widget {
     min-height: 500px;
     background-color: #fafafa;
@@ -1005,6 +1085,10 @@ ul {
 .galeria-cta {
     text-align: center;
     margin-top: var(--espacamento-lg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
 }
 
 .galeria-cta .btn {
@@ -1050,6 +1134,30 @@ ul {
 .info-card.importante {
     background-color: #fff9e6;
     border: 2px solid var(--cor-amarelo);
+}
+
+.politica-atendimento-link {
+    margin-top: var(--espacamento-md);
+    padding-top: var(--espacamento-md);
+    border-top: 2px dashed var(--cor-amarelo);
+}
+
+.politica-atendimento-link p {
+    margin-bottom: 0.5rem;
+}
+
+.politica-atendimento-link .btn-small-link {
+    display: inline-block;
+    color: var(--cor-verde);
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 0.5rem;
+    transition: var(--transicao-rapida);
+}
+
+.politica-atendimento-link .btn-small-link:hover {
+    color: var(--cor-laranja);
+    text-decoration: underline;
 }
 
 .info-header {
@@ -1437,7 +1545,7 @@ ul {
 
 .resumo-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: var(--espacamento-md);
 }
 
@@ -1674,6 +1782,53 @@ ul {
     .politica-section {
         padding: var(--espacamento-md);
     }
+}
+
+/* ===== DECORAÇÕES FLUTUANTES ===== */
+.decoracao-flutuante {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0.5;
+    animation: float-gentle 4s ease-in-out infinite;
+    z-index: 1;
+}
+
+.decoracao-flutuante.top-left {
+    top: 2rem;
+    left: 2rem;
+    width: 60px;
+}
+
+.decoracao-flutuante.top-right {
+    top: 2rem;
+    right: 2rem;
+    width: 60px;
+}
+
+.decoracao-flutuante.bottom-left {
+    bottom: 2rem;
+    left: 2rem;
+    width: 60px;
+}
+
+.decoracao-flutuante.bottom-right {
+    bottom: 2rem;
+    right: 2rem;
+    width: 60px;
+}
+
+@keyframes float-gentle {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-15px) rotate(5deg);
+    }
+}
+
+/* Garantir que seções com decorações tenham position relative */
+section.com-decoracao {
+    position: relative;
 }
 
 /* ===== ACESSIBILIDADE ===== */

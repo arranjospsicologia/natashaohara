@@ -10,6 +10,62 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BeautySalon",
+      "name": "Natasha O'hara - Cabelo e Arte",
+      "description": "Especialista em cabelos naturais, crespos, cacheados e lisos. Atendimento personalizado em Vitória-ES com foco na valorização da beleza natural.",
+      "image": "https://natashaohara.com/assets/hero-photo.jpg",
+      "url": "https://natashaohara.com.br",
+      "telephone": "+5527999271812",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Rua Darcy Grijó, 50 - Sala 410, Ed. Madison Office Tower",
+        "addressLocality": "Jardim da Penha",
+        "addressRegion": "ES",
+        "postalCode": "29060-670",
+        "addressCountry": "BR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -20.2798003,
+        "longitude": -40.3010011
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Tuesday", "Thursday"],
+          "opens": "10:00",
+          "closes": "20:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Wednesday", "Friday"],
+          "opens": "13:00",
+          "closes": "20:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "13:00",
+          "closes": "18:00"
+        }
+      ],
+      "sameAs": [
+        "https://instagram.com/nattasha.ohara",
+        "https://www.google.com/maps/place/Natasha+O'hara.+Cabelo+e+Arte/@-20.2798003,-40.3010011"
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "reviewCount": "21"
+      }
+    }
+    </script>
 </head>
 <body>
     <!-- Header/Navigation -->
@@ -49,7 +105,7 @@
             </div>
             <h1 class="hero-title">Natasha O'hara</h1>
             <p class="hero-subtitle">Cabelos Naturais com Técnica e Amor</p>
-            <p class="hero-description">Transforme seus cachos em um salão dedicado exclusivamente à valorização da sua beleza natural</p>
+            <p class="hero-description">Um salão dedicado exclusivamente à valorização da sua beleza natural</p>
             <div class="hero-buttons">
                 <a href="https://wa.me/5527999271812?text=Olá!%20Gostaria%20de%20agendar%20um%20horário" class="btn btn-primary" target="_blank">
                     <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
@@ -74,10 +130,11 @@
     </section>
 
     <!-- Sobre Section -->
-    <section id="sobre" class="sobre">
+    <section id="sobre" class="sobre com-decoracao">
+        <img src="assets/grafismos/cacto-florido1.png" alt="Decoração" class="decoracao-flutuante bottom-right">
         <div class="container">
             <div class="section-header">
-                <img src="assets/grafismos/Ativo 18sol.png" alt="Sol" class="section-decoracao">
+                <img src="assets/grafismos/sol-rosto.png" alt="Sol" class="section-decoracao">
                 <h2 class="section-title">Sobre Natasha O'hara</h2>
                 <div class="title-underline"></div>
             </div>
@@ -105,7 +162,8 @@
     </section>
 
     <!-- Depoimentos Section -->
-    <section class="depoimentos">
+    <section class="depoimentos com-decoracao">
+        <img src="assets/grafismos/grama1.png" alt="Decoração" class="decoracao-flutuante bottom-left">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">O Que Minhas Clientes Dizem</h2>
@@ -185,11 +243,19 @@
                     </div>
                 </div>
             </div>
+
+            <div class="depoimentos-cta">
+                <a href="https://www.google.com/maps/place/Natasha+O'hara.+Cabelo+e+Arte/@-20.4257328,-40.3692477,11.5z/data=!4m8!3m7!1s0xb819a975414759:0x39b516835c43b94c!8m2!3d-20.2798003!4d-40.3010011!9m1!1b1!16s%2Fg%2F11ft10c7c9?entry=ttu&g_ep=EgoyMDI1MTEwMi4wIKXMDSoASAFQAw%3D%3D" class="btn btn-secondary" target="_blank" rel="noopener">
+                    Ver Todas as Avaliações no Google
+                </a>
+            </div>
         </div>
     </section>
 
     <!-- Serviços Section -->
-    <section id="servicos" class="servicos">
+    <section id="servicos" class="servicos com-decoracao">
+        <img src="assets/grafismos/cobra.png" alt="Decoração" class="decoracao-flutuante top-right">
+        <img src="assets/grafismos/lua.png" alt="Decoração" class="decoracao-flutuante bottom-left">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Serviços</h2>
@@ -203,7 +269,7 @@
                     <!-- Cortes - Destaque -->
                     <div class="servico-card destaque">
                         <div class="servico-header">
-                            <img src="assets/grafismos/Ativo 3tesoura.png" alt="Tesoura" class="servico-icon-img">
+                            <img src="assets/grafismos/tesoura.png" alt="Tesoura" class="servico-icon-img">
                             <h3>Cortes</h3>
                         </div>
                         <div class="servico-items">
@@ -226,7 +292,7 @@
                     <!-- Hidratação -->
                     <div class="servico-card">
                         <div class="servico-header">
-                            <img src="assets/grafismos/Ativo 6flor1.png" alt="Flor" class="servico-icon-img">
+                            <img src="assets/grafismos/flor.png" alt="Flor" class="servico-icon-img">
                             <h3>Hidratação</h3>
                         </div>
                         <div class="servico-items">
@@ -255,7 +321,7 @@
                     <!-- Sobrancelhas -->
                     <div class="servico-card-compact">
                         <div class="servico-header">
-                            <img src="assets/grafismos/Ativo 5estrelas1.png" alt="Estrelas" class="servico-icon-img-small">
+                            <img src="assets/grafismos/tres-estrelas.png" alt="Estrelas" class="servico-icon-img-small">
                             <h4>Sobrancelhas</h4>
                         </div>
                         <div class="servico-items">
@@ -263,17 +329,13 @@
                                 <span class="servico-nome">Design Natural</span>
                                 <span class="servico-preco">R$ 70</span>
                             </div>
-                            <div class="servico-item">
-                                <span class="servico-nome">Design com Henna</span>
-                                <span class="servico-preco">R$ 75</span>
-                            </div>
                         </div>
                     </div>
 
                     <!-- Serviços Adicionais -->
                     <div class="servico-card-compact">
                         <div class="servico-header">
-                            <img src="assets/grafismos/Ativo 16pente1.png" alt="Pente" class="servico-icon-img-small">
+                            <img src="assets/grafismos/pente.png" alt="Pente" class="servico-icon-img-small">
                             <h4>Serviços Adicionais</h4>
                         </div>
                         <div class="servico-items">
@@ -294,7 +356,13 @@
             <div class="servicos-observacoes">
                 <div class="observacao-box">
                     <h4>❌ Serviços NÃO Realizados</h4>
-                    <p>Não realizamos alisamentos ou colorações de cabelos.</p>
+                    <p>Para manter a qualidade e especialização em cabelos naturais, não realizamos os seguintes serviços:</p>
+                    <ul class="servicos-nao-realizados">
+                        <li>Alisamentos e selagens</li>
+                        <li>Botox capilar e alinhamento de fios</li>
+                        <li>Hidratações sob química</li>
+                        <li>Colorações, luzes, mechas e ruivos</li>
+                    </ul>
                 </div>
                 <div class="observacao-box politica-destaque">
                     <h4>💎 Política de Sinal</h4>
@@ -322,6 +390,13 @@
                 <p class="section-subtitle">Transformações reais, resultados incríveis</p>
             </div>
 
+            <div class="instagram-info">
+                <img src="assets/grafismos/nuvem1.png" alt="Decoração" class="instagram-decoracao-antes">
+                <p class="instagram-text">
+                    Fotos do meu Instagram <a href="https://instagram.com/nattasha.ohara" target="_blank" rel="noopener">@nattasha.ohara</a>
+                </p>
+            </div>
+
             <div class="instagram-feed">
                 <!-- Widget do Instagram SociableKit -->
                 <div class="instagram-widget">
@@ -330,10 +405,8 @@
             </div>
 
             <div class="galeria-cta">
+                <img src="assets/grafismos/nuvem2.png" alt="Decoração" class="instagram-decoracao-depois">
                 <a href="https://instagram.com/nattasha.ohara" class="btn btn-secondary" target="_blank">
-                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073z"/>
-                    </svg>
                     Ver Mais no Instagram
                 </a>
             </div>
@@ -341,7 +414,9 @@
     </section>
 
     <!-- Contato Section -->
-    <section id="contato" class="contato">
+    <section id="contato" class="contato com-decoracao">
+        <img src="assets/grafismos/bota.png" alt="Decoração" class="decoracao-flutuante top-left">
+        <img src="assets/grafismos/estrela-amarela-grossa.png" alt="Decoração" class="decoracao-flutuante top-right">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Localização & Contato</h2>
@@ -352,7 +427,7 @@
                 <div class="contato-info">
                     <div class="info-card">
                         <div class="info-header">
-                            <img src="assets/grafismos/Ativo 7cacto1.png" alt="Localização" class="info-icon-img">
+                            <img src="assets/grafismos/cacto1.png" alt="Localização" class="info-icon-img">
                             <h3>Endereço</h3>
                         </div>
                         <p>Rua Darcy Grijó, 50<br>
@@ -366,7 +441,7 @@
 
                     <div class="info-card">
                         <div class="info-header">
-                            <img src="assets/grafismos/Ativo 4sol-no-horizonte.png" alt="Horários" class="info-icon-img">
+                            <img src="assets/grafismos/sol-horizonte.png" alt="Horários" class="info-icon-img">
                             <h3>Horário de Atendimento</h3>
                         </div>
                         <ul class="horarios">
@@ -379,7 +454,7 @@
 
                     <div class="info-card">
                         <div class="info-header">
-                            <img src="assets/grafismos/Ativo 10mão.png" alt="Contato" class="info-icon-img">
+                            <img src="assets/grafismos/mao.png" alt="Contato" class="info-icon-img">
                             <h3>Contato</h3>
                         </div>
                         <p><strong>WhatsApp (Agendamentos):</strong><br>
@@ -391,7 +466,7 @@
 
                     <div class="info-card importante">
                         <div class="info-header">
-                            <img src="assets/grafismos/Ativo 12estrela1.png" alt="Importante" class="info-icon-img">
+                            <img src="assets/grafismos/estrela-pontuda.png" alt="Importante" class="info-icon-img">
                             <h3>Importante</h3>
                         </div>
                         <ul class="lista-importante">
@@ -400,6 +475,9 @@
                             <li>Chegue antes do horário agendado</li>
                             <li>Máximo de 1 acompanhante</li>
                         </ul>
+                        <div class="politica-atendimento-link">
+                            <a href="politica.html" class="btn-small-link">Conheça nossa Política de Atendimento →</a>
+                        </div>
                     </div>
                 </div>
 
@@ -438,10 +516,8 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Natasha O'hara. Todos os direitos reservados.</p>
+                <p>&copy; 2025 Natasha O'hara. Todos os direitos reservados.</p>
                 <div class="footer-links">
-                    <a href="politica.html">Política de Atendimento</a>
-                    <span class="separator">•</span>
                     <a href="privacidade.html">Privacidade</a>
                     <span class="separator">•</span>
                     <a href="termos.html">Termos de Uso</a>
