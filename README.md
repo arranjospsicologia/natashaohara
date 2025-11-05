@@ -1,247 +1,235 @@
-# Site Natasha O'hara
+# 💇‍♀️ Natasha O'hara - Cabelo e Arte
 
-Site profissional para a cabeleireira Natasha O'hara, especialista em cabelos naturais, crespos e cacheados.
+Site profissional para Natasha O'hara, especialista em cabelos naturais, crespos e cacheados em Vitória-ES.
 
-## 🎨 Identidade Visual
+[![Deploy Status](https://img.shields.io/badge/status-active-success.svg)](https://arranjospsicologia.github.io/natashaohara/)
+[![GitHub Pages](https://img.shields.io/badge/hosted-GitHub%20Pages-blue.svg)](https://arranjospsicologia.github.io/natashaohara/)
 
-- **Cores Principais:** 
-  - Verde: #3e6634
-  - Laranja: #f79b00
-  - Amarelo: #fce100
+## 🌟 Sobre
 
-- **Cores Secundárias:**
-  - Verde claro: #728a65
-  - Bege: #f1e9de
+Site desenvolvido para apresentar os serviços especializados da cabeleireira Natasha O'hara, que trabalha exclusivamente com cabelos naturais, crespos e cacheados. O site oferece uma experiência moderna e profissional, mantendo a identidade visual da marca.
 
-- **Tipografia:** Montserrat (via Google Fonts)
+## 🎨 Características
 
-## 📋 Estrutura do Site
-
-- **Home**: Hero com CTA, aviso de política, botões de ação
-- **Sobre**: História da Natasha e do salão
-- **Serviços**: Lista completa de serviços e preços
-- **Galeria**: Feed do Instagram (requer configuração)
-- **Contato**: Endereço, horários, mapa do Google
-- **Política de Atendimento**: Página dedicada às políticas
-
-## 🚀 Deploy no GitHub Pages
-
-### Passo 1: Criar Repositório no GitHub
-
-1. Acesse [GitHub](https://github.com) e faça login
-2. Clique em "New Repository"
-3. Nome sugerido: `natasha-ohara-site`
-4. Marque como **Public**
-5. Clique em "Create repository"
-
-### Passo 2: Upload dos Arquivos
-
-**Opção A: Via Interface Web do GitHub**
-1. No repositório criado, clique em "uploading an existing file"
-2. Arraste todos os arquivos e pastas do site
-3. Commit as mudanças
-
-**Opção B: Via Git (Linha de Comando)**
-```bash
-cd natasha-ohara-site
-git init
-git add .
-git commit -m "Initial commit - Site Natasha O'hara"
-git branch -M main
-git remote add origin https://github.com/SEU-USUARIO/natasha-ohara-site.git
-git push -u origin main
-```
-
-### Passo 3: Ativar GitHub Pages
-
-1. No repositório, vá em **Settings**
-2. No menu lateral, clique em **Pages**
-3. Em "Source", selecione **main** branch
-4. Clique em **Save**
-5. Aguarde alguns minutos
-
-Seu site estará disponível em:
-`https://SEU-USUARIO.github.io/natasha-ohara-site/`
-
-## 🌐 Configurar Domínio Personalizado (registro.br)
-
-### Passo 1: Registrar Domínio
-
-1. Acesse [registro.br](https://registro.br)
-2. Pesquise e registre o domínio desejado (ex: `natashaohara.com.br`)
-
-### Passo 2: Configurar DNS
-
-No painel do registro.br, adicione os seguintes registros DNS:
-
-**Para usar domínio raiz (natashaohara.com.br):**
-```
-Tipo: A
-Nome: @
-Valor: 185.199.108.153
-```
-```
-Tipo: A
-Nome: @
-Valor: 185.199.109.153
-```
-```
-Tipo: A
-Nome: @
-Valor: 185.199.110.153
-```
-```
-Tipo: A
-Nome: @
-Valor: 185.199.111.153
-```
-
-**Para usar subdomínio (www.natashaohara.com.br):**
-```
-Tipo: CNAME
-Nome: www
-Valor: SEU-USUARIO.github.io
-```
-
-### Passo 3: Configurar no GitHub Pages
-
-1. No repositório GitHub, vá em **Settings** > **Pages**
-2. Em "Custom domain", digite seu domínio: `natashaohara.com.br`
-3. Clique em **Save**
-4. Marque a opção **Enforce HTTPS** (aguarde alguns minutos antes)
-
-**Nota:** Pode levar até 48h para o DNS propagar completamente.
-
-## 📸 Configurar Widget do Instagram
-
-O site está preparado para receber o feed do Instagram. Siga os passos:
-
-### Método Recomendado: SnapWidget (Grátis)
-
-1. Acesse [SnapWidget](https://snapwidget.com/)
-2. Clique em **"Create Widget"**
-3. Escolha **"Instagram Feed"**
-4. Configure:
-   - Username: `nattasha.ohara`
-   - Layout: Grid (recomendado)
-   - Number of Posts: 6-9
-   - Widget Size: Responsive
-   - Theme: Customize com as cores do site
-5. Clique em **"Get Widget"**
-6. Copie o código gerado
-7. Abra o arquivo `js/script.js`
-8. Localize a função `loadInstagramWidget()`
-9. Substitua o `placeholderHTML` pelo código do SnapWidget
-
-Exemplo de código do SnapWidget:
-```javascript
-const widgetHTML = `
-    <script src="https://snapwidget.com/js/snapwidget.js"></script>
-    <iframe src="https://snapwidget.com/embed/XXXXXX" 
-            class="snapwidget-widget" 
-            allowtransparency="true" 
-            frameborder="0" 
-            scrolling="no" 
-            style="border:none; overflow:hidden; width:100%; min-height:400px;">
-    </iframe>
-`;
-widgetContainer.innerHTML = widgetHTML;
-```
-
-### Alternativa: EmbedSocial
-
-1. Acesse [EmbedSocial](https://embedsocial.com/)
-2. Crie uma conta gratuita
-3. Conecte sua conta do Instagram
-4. Personalize o widget
-5. Copie o código embed
-6. Cole em `js/script.js` conforme instruções acima
-
-## 📱 Configurar Google Analytics (Opcional)
-
-Para rastrear visitantes:
-
-1. Acesse [Google Analytics](https://analytics.google.com/)
-2. Crie uma propriedade
-3. Copie o código de medição (gtag.js)
-4. Cole no `<head>` de `index.html` e `politica.html`:
-
-```html
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-XXXXXXXXXX');
-</script>
-```
-
-## 🗺️ Atualizar Mapa do Google
-
-O iframe do mapa está com coordenadas genéricas. Para atualizar:
-
-1. Acesse [Google Maps](https://maps.google.com/)
-2. Pesquise: "Rua Darcy Grijó, 50, Vitória, ES"
-3. Clique em "Compartilhar" > "Incorporar um mapa"
-4. Copie o código iframe
-5. Substitua o iframe em `index.html` na seção de Contato
-
-## 📝 Atualizar Conteúdo
-
-### Adicionar Fotos do Salão
-
-1. Adicione as fotos na pasta `images/`
-2. Edite `index.html` para incluir as imagens onde desejar
-3. Exemplo:
-```html
-<img src="images/salao-1.jpg" alt="Interior do salão">
-```
-
-### Atualizar Serviços ou Preços
-
-Edite o arquivo `index.html`, seção `id="servicos"`
-
-### Atualizar Horários
-
-Edite o arquivo `index.html`, seção `id="contato"`
-
-## 🔧 Manutenção
-
-### Atualizar Site
-
-1. Edite os arquivos HTML, CSS ou JS conforme necessário
-2. Commit e push para o GitHub:
-```bash
-git add .
-git commit -m "Descrição da atualização"
-git push
-```
-3. O GitHub Pages atualizará automaticamente em alguns minutos
-
-### Backup
-
-Mantenha sempre uma cópia local dos arquivos e faça commits regulares no GitHub.
-
-## 📞 Contato
-
-**Natasha O'hara**
-- 📱 WhatsApp: (27) 99927-1812
-- 📧 Instagram: [@nattasha.ohara](https://instagram.com/nattasha.ohara)
-- 📍 Rua Darcy Grijó, 50, Sala 410 - Vitória/ES
+- ✨ **Design Moderno e Responsivo** - Adaptado para desktop, tablet e mobile
+- 🎨 **Identidade Visual Integrada** - Grafismos e cores da marca presentes em todo o site
+- ⭐ **Avaliações Reais** - 5 avaliações autênticas do Google Reviews
+- 📸 **Galeria Instagram** - Widget SociableKit integrado com feed do Instagram
+- 📍 **Localização Precisa** - Mapa do Google Maps integrado
+- 📋 **Política Transparente** - Página dedicada à política de atendimento
+- 🎯 **SEO Otimizado** - Meta tags e estrutura semântica para melhor ranqueamento
 
 ## 🛠️ Tecnologias Utilizadas
 
-- HTML5
-- CSS3 (com variáveis CSS)
-- JavaScript Vanilla (sem frameworks)
-- Google Fonts (Montserrat)
-- GitHub Pages (hospedagem)
+- **HTML5** - Estrutura semântica e acessível
+- **CSS3** - Estilização avançada com variáveis CSS, gradientes e animações
+- **JavaScript (Vanilla)** - Funcionalidades interativas sem dependências
+- **Google Fonts** - Tipografia Montserrat
+- **SociableKit** - Widget do Instagram
+- **Google Maps API** - Mapa de localização
+
+## 📂 Estrutura do Projeto
+
+```
+natashaohara/
+├── assets/
+│   ├── grafismos/          # Elementos visuais da marca
+│   ├── about-photo.jpg     # Foto sobre Natasha
+│   ├── hero-photo.jpg      # Imagem de fundo do hero
+│   └── instagram-*.jpg     # Fotos do Instagram
+├── index.html              # Página principal
+├── politica.html           # Política de atendimento
+├── styles.css              # Estilos principais
+├── script.js               # JavaScript principal
+└── README.md               # Este arquivo
+```
+
+## 🎯 Seções do Site
+
+### 1. Hero Section
+- Imagem de fundo profissional com overlay verde
+- Badge animado "Especialista em Cabelos Naturais"
+- Chamadas para ação (WhatsApp e Galeria)
+- Aviso compacto sobre política de atendimento
+
+### 2. Sobre Natasha
+- Foto profissional com decoração gradiente
+- História de superação e inspiração
+- Destaque especial com ícone
+- Citação em formato profissional
+
+### 3. Depoimentos
+- 5 avaliações reais do Google Reviews:
+  - Joceane Alves Mewes
+  - Lara Bolzani (card destacado)
+  - Renata Leal da Silva
+  - Larissa Pacheco
+  - Anna Carolina
+- Design em cards com aspas decorativas
+- Sistema de estrelas (5/5)
+- Card central com destaque em gradiente verde
+
+### 4. Serviços
+- Layout organizado em 2 colunas (principais + secundários)
+- Grafismos personalizados da marca integrados:
+  - Tesoura (Cortes)
+  - Flor (Hidratação)
+  - Estrelas (Sobrancelhas)
+  - Pente (Serviços Adicionais)
+- Preços claros e objetivos
+- Card de Cortes em destaque
+
+### 5. Galeria Instagram
+- Widget SociableKit integrado (embed-id: 25618491)
+- Link direto para o perfil @nattasha.ohara
+- Visualização das últimas postagens
+
+### 6. Localização & Contato
+- Mapa do Google Maps com localização exata
+- Grafismos da marca nos ícones:
+  - Cacto (Endereço)
+  - Sol no horizonte (Horários)
+  - Mão (Contato)
+  - Estrela (Importante)
+- Horários de atendimento detalhados
+- Informações importantes com checkmarks
+
+## 🚀 Como Executar Localmente
+
+1. Clone o repositório:
+```bash
+git clone https://github.com/arranjospsicologia/natashaohara.git
+```
+
+2. Navegue até o diretório:
+```bash
+cd natashaohara
+```
+
+3. Abra o arquivo `index.html` em seu navegador, ou use um servidor local:
+```bash
+# Com Python 3
+python -m http.server 8000
+
+# Com Node.js (npx)
+npx serve
+```
+
+4. Acesse no navegador:
+```
+http://localhost:8000
+```
+
+## 🎨 Paleta de Cores da Marca
+
+| Cor | Hex | Uso |
+|-----|-----|-----|
+| Verde | `#3e6634` | Cor principal, títulos, headers |
+| Laranja | `#f79b00` | Destaques, botões de ação |
+| Amarelo | `#fce100` | Acentos, badges, avisos |
+| Verde Claro | `#728a65` | Subtítulos, elementos secundários |
+| Bege | `#f1e9de` | Fundos suaves, cards, decorações |
+
+## 📱 Contato
+
+- **WhatsApp:** [(27) 99927-1812](https://wa.me/5527999271812)
+- **Instagram:** [@nattasha.ohara](https://instagram.com/nattasha.ohara)
+- **Endereço:** Rua Darcy Grijó, 50 - Sala 410, Ed. Madison Office Tower, Jardim da Penha, Vitória-ES
+
+## 📋 Política de Atendimento
+
+O site inclui uma página dedicada à política de atendimento, detalhando:
+- ✅ Sinal obrigatório de R$ 50,00 (descontado no serviço)
+- ✅ Política de reagendamento (24h de antecedência)
+- ⚠️ Regra de pontualidade (tolerância de 5 minutos)
+- ❌ Serviços não realizados (alisamentos e colorações)
+
+Acesse em: [politica.html](https://arranjospsicologia.github.io/natashaohara/politica.html)
+
+## 🌐 Deploy
+
+O site está hospedado gratuitamente no GitHub Pages:
+
+**URL Atual:** https://arranjospsicologia.github.io/natashaohara/
+
+### Como Ativar o GitHub Pages (se ainda não ativou)
+
+1. Acesse: https://github.com/arranjospsicologia/natashaohara/settings/pages
+2. Em **Source**, selecione: **Deploy from a branch**
+3. Em **Branch**, selecione: **main** / **/ (root)**
+4. Clique em **Save**
+5. Aguarde 2-3 minutos
+
+### Atualizar o Site
+
+Para fazer alterações e publicar:
+
+```bash
+git add .
+git commit -m "Descrição das alterações"
+git push origin main
+```
+
+As mudanças serão automaticamente publicadas em alguns minutos.
+
+## 🔧 Configurações Avançadas
+
+### Configurar Domínio Personalizado
+
+Para usar um domínio como `www.natashaohara.com.br`:
+
+1. Registre o domínio no [registro.br](https://registro.br)
+2. Configure os registros DNS (A ou CNAME)
+3. No GitHub: Settings > Pages > Custom domain
+4. Digite seu domínio e salve
+5. Aguarde propagação do DNS (até 48h)
+
+### Google Analytics
+
+Para adicionar rastreamento de visitantes, insira o código do Google Analytics no `<head>` de cada página HTML.
+
+## 📝 Manutenção
+
+### Atualizar Conteúdo
+
+- **Serviços/Preços:** Edite `index.html` na seção `#servicos`
+- **Horários:** Edite `index.html` na seção `#contato`
+- **Fotos:** Substitua arquivos na pasta `assets/`
+- **Avaliações:** Edite `index.html` na seção `.depoimentos`
+
+### Adicionar Novas Páginas
+
+1. Crie novo arquivo `.html` na raiz
+2. Copie a estrutura de `index.html` (header e footer)
+3. Adicione link no menu de navegação
+4. Commit e push para publicar
+
+## 🎯 Features Implementadas
+
+- [x] Hero section com imagem de fundo profissional
+- [x] Seção Sobre com foto e decoração
+- [x] 5 Depoimentos reais do Google Reviews
+- [x] Serviços reorganizados com grafismos da marca
+- [x] Widget Instagram integrado (SociableKit)
+- [x] Mapa do Google Maps atualizado
+- [x] Ícones substituídos por grafismos da marca
+- [x] Página de Política formatada profissionalmente
+- [x] Design 100% responsivo
+- [x] Animações e transições suaves
+- [x] SEO básico implementado
 
 ## 📄 Licença
 
-© 2024 Natasha O'hara. Todos os direitos reservados.
+Este projeto foi desenvolvido exclusivamente para Natasha O'hara - Cabelo e Arte. Todos os direitos reservados.
 
 ---
 
-**Desenvolvido com ❤️ para Natasha O'hara**
+<div align="center">
+
+**Desenvolvido com ❤️ usando [Claude Code](https://claude.com/claude-code)**
+
+*Especialista em Cabelos Naturais, Crespos e Cacheados* ✨
+
+[Ver Site](https://arranjospsicologia.github.io/natashaohara/) • [Reportar Bug](https://github.com/arranjospsicologia/natashaohara/issues)
+
+</div>
