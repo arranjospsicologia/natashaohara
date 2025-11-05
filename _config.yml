@@ -1,0 +1,83 @@
+# GitHub Pages Configuration
+# Natasha O'hara - Site Configuration
+
+# Site settings
+title: "Natasha O'hara - Especialista em Cabelos Naturais"
+description: "Cabeleireira especializada em cabelos naturais, crespos e cacheados em Vitória - ES"
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site
+
+# Author
+author:
+  name: "Natasha O'hara"
+  email: ""
+  instagram: "nattasha.ohara"
+  whatsapp: "+5527999271812"
+
+# Location
+location:
+  address: "Rua Darcy Grijó, 50, Sala 410"
+  neighborhood: "Jardim da Penha"
+  city: "Vitória"
+  state: "ES"
+  zipcode: "29060-500"
+  country: "Brasil"
+
+# Social links
+social:
+  instagram: "https://instagram.com/nattasha.ohara"
+  whatsapp: "https://wa.me/5527999271812"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+
+# Exclude from processing
+exclude:
+  - README.md
+  - LICENSE
+  - CNAME
+  - .gitignore
+  - .git
+  - .github
+
+# Include files
+include:
+  - _redirects
+
+# Plugins
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# SEO settings
+twitter:
+  username: nattasha_ohara
+  card: summary_large_image
+
+facebook:
+  publisher: nattasha.ohara
+
+# Google Analytics (adicione seu ID quando disponível)
+# google_analytics: UA-XXXXXXXXX-X
+
+# Theme settings
+theme: null
+remote_theme: null
+
+# Timezone
+timezone: America/Sao_Paulo
+
+# Language
+lang: pt-BR
+
+# Encoding
+encoding: utf-8
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+      lang: pt-BR
