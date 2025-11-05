@@ -324,3 +324,74 @@ console.log('%c👋 Olá! Bem-vindo ao site da Natasha O\'hara', 'color: #3e6634
 console.log('%c✨ Especialista em cabelos naturais, crespos e cacheados', 'color: #f79b00; font-size: 14px;');
 console.log('%c📱 WhatsApp: (27) 99927-1812', 'color: #728a65; font-size: 12px;');
 console.log('%c📍 Vitória - ES', 'color: #728a65; font-size: 12px;');
+
+// ===== GERENCIAMENTO DE COOKIES (LGPD) =====
+document.addEventListener('DOMContentLoaded', function() {
+    const cookieBanner = document.getElementById('cookie-banner');
+    const acceptCookies = document.getElementById('accept-cookies');
+    const declineCookies = document.getElementById('decline-cookies');
+
+    // Verificar se o usuário já respondeu sobre cookies
+    const cookieConsent = localStorage.getItem('cookieConsent');
+
+    // Se ainda não respondeu, mostrar banner após 1 segundo
+    if (!cookieConsent && cookieBanner) {
+        setTimeout(() => {
+            cookieBanner.classList.add('show');
+        }, 1000);
+    }
+
+    // Botão de aceitar cookies
+    if (acceptCookies) {
+        acceptCookies.addEventListener('click', function() {
+            localStorage.setItem('cookieConsent', 'accepted');
+            localStorage.setItem('cookieConsentDate', new Date().toISOString());
+            hideCookieBanner();
+
+            // Aqui você pode inicializar analytics ou outros scripts
+            initializeAnalytics();
+        });
+    }
+
+    // Botão de recusar cookies
+    if (declineCookies) {
+        declineCookies.addEventListener('click', function() {
+            localStorage.setItem('cookieConsent', 'declined');
+            localStorage.setItem('cookieConsentDate', new Date().toISOString());
+            hideCookieBanner();
+        });
+    }
+
+    // Função para esconder o banner
+    function hideCookieBanner() {
+        if (cookieBanner) {
+            cookieBanner.classList.remove('show');
+            setTimeout(() => {
+                cookieBanner.style.display = 'none';
+            }, 400);
+        }
+    }
+
+    // Inicializar analytics apenas se consentimento foi dado
+    function initializeAnalytics() {
+        const consent = localStorage.getItem('cookieConsent');
+
+        if (consent === 'accepted') {
+            // Aqui você pode adicionar scripts de analytics
+            // Exemplo: Google Analytics, Facebook Pixel, etc.
+            console.log('Analytics initialized - Consent given');
+
+            // Se tiver Google Analytics configurado:
+            // if (typeof gtag !== 'undefined') {
+            //     gtag('consent', 'update', {
+            //         'analytics_storage': 'granted'
+            //     });
+            // }
+        }
+    }
+
+    // Se o usuário já aceitou, inicializar analytics
+    if (cookieConsent === 'accepted') {
+        initializeAnalytics();
+    }
+});

@@ -13,3 +13,6 @@ desktop.ini
 # Temporários
 *.tmp
 *.log
+
+# Claude Code
+.claude/
