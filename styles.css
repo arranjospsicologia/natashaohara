@@ -449,7 +449,7 @@ ul {
     position: relative;
     z-index: 2;
     max-width: 600px;
-    margin-top: var(--espacamento-lg);
+    margin: var(--espacamento-md) auto;
     background-color: rgba(255, 249, 230, 0.95);
     border: 2px solid var(--cor-amarelo);
     border-radius: 50px;
@@ -463,6 +463,7 @@ ul {
 .notice-icon {
     font-size: 1.5rem;
     flex-shrink: 0;
+    display: none;
 }
 
 .notice-content {
@@ -1604,6 +1605,10 @@ ul {
 
 @media (max-width: 768px) {
     /* Header Mobile */
+    .logo {
+        display: none;
+    }
+
     .menu-toggle {
         display: flex;
     }
@@ -1673,10 +1678,18 @@ ul {
     .important-notice {
         flex-direction: column;
         text-align: center;
+        padding: var(--espacamento-xs) var(--espacamento-sm);
+        margin: var(--espacamento-sm) auto;
+        border-radius: 30px;
     }
 
     .notice-content p {
         text-align: center;
+        font-size: 0.85rem;
+    }
+
+    .notice-link {
+        font-size: 0.8rem;
     }
 
     /* Seções */
