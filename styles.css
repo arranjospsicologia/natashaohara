@@ -611,6 +611,113 @@ ul {
     border-radius: 50%;
 }
 
+/* Carrossel de Depoimentos */
+.depoimentos-carousel-wrapper {
+    position: relative;
+    margin-top: var(--espacamento-lg);
+    padding: 0 60px;
+}
+
+.depoimentos-carousel {
+    overflow: hidden;
+    position: relative;
+}
+
+.depoimentos-track {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    gap: var(--espacamento-md);
+}
+
+.depoimentos-track .depoimento-card {
+    flex: 0 0 calc(33.333% - var(--espacamento-md));
+    min-width: calc(33.333% - var(--espacamento-md));
+}
+
+/* Botões de Navegação do Carrossel */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--cor-verde);
+    color: var(--cor-branco);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transicao-normal);
+    box-shadow: var(--sombra-md);
+    z-index: 10;
+}
+
+.carousel-btn:hover {
+    background-color: var(--cor-laranja);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: var(--sombra-lg);
+}
+
+.carousel-btn:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+.carousel-btn-prev {
+    left: 0;
+}
+
+.carousel-btn-next {
+    right: 0;
+}
+
+.carousel-btn svg {
+    width: 24px;
+    height: 24px;
+}
+
+.carousel-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.carousel-btn:disabled:hover {
+    background-color: var(--cor-verde);
+    transform: translateY(-50%);
+}
+
+/* Indicadores do Carrossel */
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: var(--espacamento-md);
+    margin-bottom: var(--espacamento-md);
+}
+
+.carousel-indicators .indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--cor-cinza-medio);
+    border: none;
+    cursor: pointer;
+    transition: var(--transicao-rapida);
+    padding: 0;
+}
+
+.carousel-indicators .indicator:hover {
+    background-color: var(--cor-verde-claro);
+    transform: scale(1.2);
+}
+
+.carousel-indicators .indicator.active {
+    background-color: var(--cor-verde);
+    width: 32px;
+    border-radius: 6px;
+}
+
 .depoimentos-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -1729,6 +1836,25 @@ ul {
     /* Depoimentos */
     .depoimentos-grid {
         grid-template-columns: 1fr;
+    }
+
+    .depoimentos-carousel-wrapper {
+        padding: 0 50px;
+    }
+
+    .depoimentos-track .depoimento-card {
+        flex: 0 0 100%;
+        min-width: 100%;
+    }
+
+    .carousel-btn {
+        width: 40px;
+        height: 40px;
+    }
+
+    .carousel-btn svg {
+        width: 20px;
+        height: 20px;
     }
 
     /* Instagram */
