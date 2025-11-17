@@ -1203,6 +1203,11 @@ ul {
     margin-left: var(--espacamento-sm);
 }
 
+/* Ocultar 4º indicador no desktop (2 cards visíveis = 3 posições) */
+.servicos-indicator-mobile-only {
+    display: none;
+}
+
 /* Responsivo do Carrossel de Serviços */
 @media (max-width: 768px) {
     .servicos-carousel-wrapper {
@@ -1219,6 +1224,11 @@ ul {
         min-width: 100%;
         max-width: 100%;
         min-height: 420px;
+    }
+
+    /* Mostrar 4º indicador no mobile (1 card visível = 4 posições) */
+    .servicos-indicator-mobile-only {
+        display: inline-block;
     }
 
     .servicos-btn-prev,
