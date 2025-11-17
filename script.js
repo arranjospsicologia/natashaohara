@@ -400,7 +400,7 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function() {
     const track = document.querySelector('.depoimentos-track');
     const carousel = document.querySelector('.depoimentos-carousel');
-    const slides = Array.from(track.children);
+    const slides = track ? Array.from(track.children) : [];
     const prevButton = document.querySelector('.carousel-btn-prev');
     const nextButton = document.querySelector('.carousel-btn-next');
     const indicators = Array.from(document.querySelectorAll('.carousel-indicators .indicator'));
@@ -408,13 +408,13 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!track || slides.length === 0) return;
 
     let currentIndex = 0;
-    let slidesToShow = getSlidesToShow();
+    let slidesToShow = getSlidesToShowDepoimentos();
     const totalSlides = slides.length;
     let isTransitioning = false;
     let carouselInitialized = false;
 
     // Função para determinar quantos slides mostrar baseado na largura da tela
-    function getSlidesToShow() {
+    function getSlidesToShowDepoimentos() {
         if (window.innerWidth <= 768) {
             return 1; // Mobile: 1 slide
         } else {
@@ -598,7 +598,7 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('resize', () => {
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(() => {
-            const newSlidesToShow = getSlidesToShow();
+            const newSlidesToShow = getSlidesToShowDepoimentos();
             if (newSlidesToShow !== slidesToShow) {
                 slidesToShow = newSlidesToShow;
                 // Ajustar currentIndex se necessário
@@ -611,86 +611,16 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 250);
     });
 
-    // Suporte a navegação por teclado
-    document.addEventListener('keydown', (e) => {
-        if (isTransitioning) return;
-
-        if (e.key === 'ArrowLeft') {
-            if (currentIndex > 0) {
-                currentIndex--;
-                updateCarousel();
-            }
-        } else if (e.key === 'ArrowRight') {
-            const maxIndex = totalSlides - slidesToShow;
-            if (currentIndex < maxIndex) {
-                currentIndex++;
-                updateCarousel();
-            }
-        }
-    });
-
-    // Inicializar o carrossel após as imagens carregarem
+    // Inicializar o carrossel
     function initializeCarousel() {
         carouselInitialized = true;
         updateCarousel(false);
     }
 
-    // Esperar pelas imagens do carrossel carregarem
-    const carouselImages = track.querySelectorAll('img');
-    if (carouselImages.length > 0) {
-        let imagesLoaded = 0;
-        const totalImages = carouselImages.length;
-
-        carouselImages.forEach(img => {
-            if (img.complete) {
-                imagesLoaded++;
-            } else {
-                img.addEventListener('load', () => {
-                    imagesLoaded++;
-                    if (imagesLoaded === totalImages) {
-                        initializeCarousel();
-                    }
-                });
-                img.addEventListener('error', () => {
-                    imagesLoaded++;
-                    if (imagesLoaded === totalImages) {
-                        initializeCarousel();
-                    }
-                });
-            }
-        });
-
-        // Se todas as imagens já estão carregadas
-        if (imagesLoaded === totalImages) {
-            initializeCarousel();
-        }
-
-        // Timeout de segurança - inicializar após 2 segundos mesmo se imagens não carregarem
-        setTimeout(() => {
-            if (!carouselInitialized) {
-                initializeCarousel();
-            }
-        }, 2000);
-    } else {
-        // Se não há imagens, inicializar imediatamente
+    // Inicializar após um pequeno delay para garantir que o CSS foi aplicado
+    setTimeout(() => {
         initializeCarousel();
-    }
-
-    // Auto-play opcional (comentado por padrão)
-    // const autoplayInterval = 5000; // 5 segundos
-    // let autoplayTimer = setInterval(() => {
-    //     const maxIndex = totalSlides - slidesToShow;
-    //     if (currentIndex < maxIndex) {
-    //         currentIndex++;
-    //     } else {
-    //         currentIndex = 0;
-    //     }
-    //     updateCarousel();
-    // }, autoplayInterval);
-
-    // Pausar auto-play ao interagir
-    // track.addEventListener('mouseenter', () => clearInterval(autoplayTimer));
-    // track.addEventListener('touchstart', () => clearInterval(autoplayTimer));
+    }, 100);
 });
 
 // ===== CARROSSEL DE SERVIÇOS =====
