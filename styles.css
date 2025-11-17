@@ -472,11 +472,24 @@ ul {
     gap: 0.25rem;
 }
 
-.notice-content p {
+.notice-content .notice-text {
     margin: 0;
     text-align: center;
     font-size: 0.9rem;
     color: var(--cor-preto);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.notice-line {
+    white-space: nowrap;
+}
+
+.notice-separator {
+    display: inline;
 }
 
 .notice-link {
@@ -621,17 +634,20 @@ ul {
 .depoimentos-carousel {
     overflow: hidden;
     position: relative;
+    width: 100%;
 }
 
 .depoimentos-track {
     display: flex;
     transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     gap: var(--espacamento-md);
+    will-change: transform;
 }
 
 .depoimentos-track .depoimento-card {
-    flex: 0 0 calc(33.333% - var(--espacamento-md));
-    min-width: calc(33.333% - var(--espacamento-md));
+    flex: 0 0 calc((100% - (var(--espacamento-md) * 2)) / 3);
+    min-width: calc((100% - (var(--espacamento-md) * 2)) / 3);
+    max-width: calc((100% - (var(--espacamento-md) * 2)) / 3);
 }
 
 /* Botões de Navegação do Carrossel */
@@ -1973,13 +1989,28 @@ ul {
         border-radius: 30px;
     }
 
-    .notice-content p {
-        text-align: center;
+    .notice-content {
+        gap: 0.5rem;
+    }
+
+    .notice-content .notice-text {
         font-size: 0.85rem;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .notice-separator {
+        display: none;
+    }
+
+    .notice-line {
+        display: block;
+        width: 100%;
     }
 
     .notice-link {
         font-size: 0.8rem;
+        margin-top: 0.25rem;
     }
 
     /* Seções */

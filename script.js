@@ -399,6 +399,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // ===== CARROSSEL DE DEPOIMENTOS =====
 document.addEventListener('DOMContentLoaded', function() {
     const track = document.querySelector('.depoimentos-track');
+    const carousel = document.querySelector('.depoimentos-carousel');
     const slides = Array.from(track.children);
     const prevButton = document.querySelector('.carousel-btn-prev');
     const nextButton = document.querySelector('.carousel-btn-next');
@@ -409,6 +410,8 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentIndex = 0;
     let slidesToShow = getSlidesToShow();
     const totalSlides = slides.length;
+    let isTransitioning = false;
+    let carouselInitialized = false;
 
     // Função para determinar quantos slides mostrar baseado na largura da tela
     function getSlidesToShow() {
@@ -419,16 +422,38 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Função para atualizar a posição do carrossel
+    // Função para obter o gap do CSS computado
+    function getComputedGap() {
+        const computedStyle = window.getComputedStyle(track);
+        const gap = computedStyle.gap || computedStyle.columnGap;
+        return parseFloat(gap) || 32; // Fallback para 32px se não conseguir ler
+    }
+
+    // Função para atualizar a posição do carrossel com cálculo preciso
     function updateCarousel(animate = true) {
-        const slideWidth = slides[0].getBoundingClientRect().width;
-        const gap = 32; // 2rem = 32px (var(--espacamento-md))
-        const moveAmount = (slideWidth + gap) * currentIndex;
+        if (!carouselInitialized) return;
+
+        // Obter dimensões atuais
+        const carouselWidth = carousel.getBoundingClientRect().width;
+        const gap = getComputedGap();
+
+        // Calcular largura de um slide baseado no container
+        const slideWidth = (carouselWidth - (gap * (slidesToShow - 1))) / slidesToShow;
+
+        // Calcular movimento total
+        const moveAmount = currentIndex * (slideWidth + gap);
 
         if (animate) {
             track.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+            isTransitioning = true;
+
+            // Liberar após a transição
+            setTimeout(() => {
+                isTransitioning = false;
+            }, 500);
         } else {
             track.style.transition = 'none';
+            isTransitioning = false;
         }
 
         track.style.transform = `translateX(-${moveAmount}px)`;
@@ -460,7 +485,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Navegação - Botão Anterior
     if (prevButton) {
         prevButton.addEventListener('click', () => {
-            if (currentIndex > 0) {
+            if (currentIndex > 0 && !isTransitioning) {
                 currentIndex--;
                 updateCarousel();
             }
@@ -471,7 +496,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (nextButton) {
         nextButton.addEventListener('click', () => {
             const maxIndex = totalSlides - slidesToShow;
-            if (currentIndex < maxIndex) {
+            if (currentIndex < maxIndex && !isTransitioning) {
                 currentIndex++;
                 updateCarousel();
             }
@@ -481,9 +506,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Navegação - Indicadores
     indicators.forEach((indicator) => {
         indicator.addEventListener('click', () => {
-            const targetIndex = parseInt(indicator.getAttribute('data-slide'));
-            currentIndex = targetIndex;
-            updateCarousel();
+            if (!isTransitioning) {
+                const targetIndex = parseInt(indicator.getAttribute('data-slide'));
+                currentIndex = targetIndex;
+                updateCarousel();
+            }
         });
     });
 
@@ -501,6 +528,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }, { passive: true });
 
     function handleSwipe() {
+        if (isTransitioning) return;
+
         const swipeThreshold = 50;
         const diff = touchStartX - touchEndX;
 
@@ -522,7 +551,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Atualizar ao redimensionar a janela
+    // Atualizar ao redimensionar a janela com debounce melhorado
     let resizeTimeout;
     window.addEventListener('resize', () => {
         clearTimeout(resizeTimeout);
@@ -533,15 +562,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Ajustar currentIndex se necessário
                 const maxIndex = totalSlides - slidesToShow;
                 if (currentIndex > maxIndex) {
-                    currentIndex = maxIndex;
+                    currentIndex = Math.max(0, maxIndex);
                 }
-                updateCarousel(false);
             }
+            updateCarousel(false);
         }, 250);
     });
 
     // Suporte a navegação por teclado
     document.addEventListener('keydown', (e) => {
+        if (isTransitioning) return;
+
         if (e.key === 'ArrowLeft') {
             if (currentIndex > 0) {
                 currentIndex--;
@@ -556,8 +587,52 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Inicializar o carrossel
-    updateCarousel(false);
+    // Inicializar o carrossel após as imagens carregarem
+    function initializeCarousel() {
+        carouselInitialized = true;
+        updateCarousel(false);
+    }
+
+    // Esperar pelas imagens do carrossel carregarem
+    const carouselImages = track.querySelectorAll('img');
+    if (carouselImages.length > 0) {
+        let imagesLoaded = 0;
+        const totalImages = carouselImages.length;
+
+        carouselImages.forEach(img => {
+            if (img.complete) {
+                imagesLoaded++;
+            } else {
+                img.addEventListener('load', () => {
+                    imagesLoaded++;
+                    if (imagesLoaded === totalImages) {
+                        initializeCarousel();
+                    }
+                });
+                img.addEventListener('error', () => {
+                    imagesLoaded++;
+                    if (imagesLoaded === totalImages) {
+                        initializeCarousel();
+                    }
+                });
+            }
+        });
+
+        // Se todas as imagens já estão carregadas
+        if (imagesLoaded === totalImages) {
+            initializeCarousel();
+        }
+
+        // Timeout de segurança - inicializar após 2 segundos mesmo se imagens não carregarem
+        setTimeout(() => {
+            if (!carouselInitialized) {
+                initializeCarousel();
+            }
+        }, 2000);
+    } else {
+        // Se não há imagens, inicializar imediatamente
+        initializeCarousel();
+    }
 
     // Auto-play opcional (comentado por padrão)
     // const autoplayInterval = 5000; // 5 segundos
