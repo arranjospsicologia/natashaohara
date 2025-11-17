@@ -1114,6 +1114,76 @@ ul {
     margin-top: var(--espacamento-lg);
 }
 
+/* Carrossel de Serviços */
+.servicos-carousel-wrapper {
+    position: relative;
+    margin: var(--espacamento-lg) 0;
+    padding: 0 60px;
+    min-height: 450px;
+}
+
+.servicos-carousel {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    min-height: 420px;
+}
+
+.servicos-track {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    gap: var(--espacamento-md);
+    will-change: transform;
+    align-items: stretch;
+}
+
+.servicos-track .servico-card {
+    flex: 0 0 calc((100% - (var(--espacamento-md) * 1)) / 2);
+    min-width: calc((100% - (var(--espacamento-md) * 1)) / 2);
+    max-width: calc((100% - (var(--espacamento-md) * 1)) / 2);
+    display: flex;
+    flex-direction: column;
+    min-height: 380px;
+}
+
+.servicos-track .servico-card .servico-items {
+    flex-grow: 1;
+}
+
+/* Ajuste para indicadores de serviços */
+.servicos-indicators {
+    margin-bottom: var(--espacamento-lg);
+}
+
+/* Responsivo do Carrossel de Serviços */
+@media (max-width: 768px) {
+    .servicos-carousel-wrapper {
+        padding: 0 50px;
+        min-height: 500px;
+    }
+
+    .servicos-carousel {
+        min-height: 460px;
+    }
+
+    .servicos-track .servico-card {
+        flex: 0 0 100%;
+        min-width: 100%;
+        max-width: 100%;
+        min-height: 420px;
+    }
+
+    .servicos-carousel-wrapper .carousel-btn {
+        width: 40px;
+        height: 40px;
+    }
+
+    .servicos-carousel-wrapper .carousel-btn svg {
+        width: 20px;
+        height: 20px;
+    }
+}
+
 /* ===== GALERIA/INSTAGRAM SECTION ===== */
 .galeria {
     padding: var(--espacamento-xl) 0;
