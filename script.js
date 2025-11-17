@@ -651,6 +651,191 @@ document.addEventListener('DOMContentLoaded', function() {
     // track.addEventListener('touchstart', () => clearInterval(autoplayTimer));
 });
 
+// ===== CARROSSEL DE SERVIÇOS =====
+document.addEventListener('DOMContentLoaded', function() {
+    const track = document.querySelector('.servicos-track');
+    const carousel = document.querySelector('.servicos-carousel');
+    const slides = track ? Array.from(track.children) : [];
+    const prevButton = document.querySelector('.servicos-btn-prev');
+    const nextButton = document.querySelector('.servicos-btn-next');
+    const indicators = Array.from(document.querySelectorAll('.servicos-indicators .indicator'));
+
+    if (!track || slides.length === 0) return;
+
+    let currentIndex = 0;
+    let slidesToShow = getSlidesToShowServicos();
+    const totalSlides = slides.length;
+    let isTransitioning = false;
+    let carouselInitialized = false;
+
+    // Função para determinar quantos slides mostrar baseado na largura da tela
+    function getSlidesToShowServicos() {
+        if (window.innerWidth <= 768) {
+            return 1; // Mobile: 1 slide
+        } else {
+            return 2; // Desktop: 2 slides
+        }
+    }
+
+    // Função para obter o gap do CSS computado
+    function getComputedGap() {
+        const computedStyle = window.getComputedStyle(track);
+        const gap = computedStyle.gap || computedStyle.columnGap;
+        return parseFloat(gap) || 32; // Fallback para 32px se não conseguir ler
+    }
+
+    // Função para atualizar a posição do carrossel com cálculo preciso
+    function updateCarousel(animate = true) {
+        if (!carouselInitialized) return;
+
+        // Obter dimensões atuais
+        const carouselWidth = carousel.getBoundingClientRect().width;
+        const gap = getComputedGap();
+
+        // Calcular largura de um slide baseado no container
+        const slideWidth = (carouselWidth - (gap * (slidesToShow - 1))) / slidesToShow;
+
+        // Calcular movimento total
+        const moveAmount = currentIndex * (slideWidth + gap);
+
+        if (animate) {
+            track.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+            isTransitioning = true;
+
+            // Liberar após a transição
+            setTimeout(() => {
+                isTransitioning = false;
+            }, 500);
+        } else {
+            track.style.transition = 'none';
+            isTransitioning = false;
+        }
+
+        track.style.transform = `translateX(-${moveAmount}px)`;
+
+        updateIndicators();
+        updateButtons();
+    }
+
+    // Função para atualizar os indicadores
+    function updateIndicators() {
+        indicators.forEach((indicator, index) => {
+            indicator.classList.toggle('active', index === currentIndex);
+        });
+    }
+
+    // Função para atualizar estado dos botões
+    function updateButtons() {
+        const maxIndex = totalSlides - slidesToShow;
+
+        if (prevButton) {
+            prevButton.disabled = currentIndex === 0;
+        }
+
+        if (nextButton) {
+            nextButton.disabled = currentIndex >= maxIndex;
+        }
+    }
+
+    // Navegação - Botão Anterior
+    if (prevButton) {
+        prevButton.addEventListener('click', () => {
+            if (currentIndex > 0 && !isTransitioning) {
+                currentIndex--;
+                updateCarousel();
+            }
+        });
+    }
+
+    // Navegação - Botão Próximo
+    if (nextButton) {
+        nextButton.addEventListener('click', () => {
+            const maxIndex = totalSlides - slidesToShow;
+            if (currentIndex < maxIndex && !isTransitioning) {
+                currentIndex++;
+                updateCarousel();
+            }
+        });
+    }
+
+    // Navegação - Indicadores
+    indicators.forEach((indicator) => {
+        indicator.addEventListener('click', () => {
+            if (!isTransitioning) {
+                const targetIndex = parseInt(indicator.getAttribute('data-slide'));
+                currentIndex = targetIndex;
+                updateCarousel();
+            }
+        });
+    });
+
+    // Suporte a swipe no mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    track.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    track.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    }, { passive: true });
+
+    function handleSwipe() {
+        if (isTransitioning) return;
+
+        const swipeThreshold = 50;
+        const diff = touchStartX - touchEndX;
+
+        if (Math.abs(diff) > swipeThreshold) {
+            if (diff > 0) {
+                // Swipe left - próximo
+                const maxIndex = totalSlides - slidesToShow;
+                if (currentIndex < maxIndex) {
+                    currentIndex++;
+                    updateCarousel();
+                }
+            } else {
+                // Swipe right - anterior
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateCarousel();
+                }
+            }
+        }
+    }
+
+    // Atualizar ao redimensionar a janela com debounce melhorado
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            const newSlidesToShow = getSlidesToShowServicos();
+            if (newSlidesToShow !== slidesToShow) {
+                slidesToShow = newSlidesToShow;
+                // Ajustar currentIndex se necessário
+                const maxIndex = totalSlides - slidesToShow;
+                if (currentIndex > maxIndex) {
+                    currentIndex = Math.max(0, maxIndex);
+                }
+            }
+            updateCarousel(false);
+        }, 250);
+    });
+
+    // Inicializar o carrossel
+    function initializeCarousel() {
+        carouselInitialized = true;
+        updateCarousel(false);
+    }
+
+    // Inicializar após um pequeno delay para garantir que o CSS foi aplicado
+    setTimeout(() => {
+        initializeCarousel();
+    }, 100);
+});
+
 // ===== GALERIA DE FOTOS - TOGGLE VER MAIS =====
 document.addEventListener('DOMContentLoaded', function() {
     const toggleBtn = document.getElementById('galeria-toggle-btn');

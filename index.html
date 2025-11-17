@@ -530,93 +530,112 @@
                 <p class="section-subtitle">Atendimento especializado para cabelos naturais</p>
             </div>
 
-            <div class="servicos-container">
-                <!-- Coluna Principal -->
-                <div class="servicos-principais">
-                    <!-- Cortes - Destaque -->
-                    <div class="servico-card destaque">
-                        <div class="servico-header">
-                            <img src="assets/grafismos/tesoura.png" alt="Tesoura" class="servico-icon-img">
-                            <h3>Cortes</h3>
-                        </div>
-                        <div class="servico-items">
-                            <div class="servico-item">
-                                <span class="servico-nome">Cabelo Curto</span>
-                                <span class="servico-preco">R$ 100</span>
-                            </div>
-                            <div class="servico-item">
-                                <span class="servico-nome">Cabelo Médio/Longo</span>
-                                <span class="servico-preco">R$ 125</span>
-                            </div>
-                            <div class="servico-item">
-                                <span class="servico-nome">Cabelo Bordado*</span>
-                                <span class="servico-preco">R$ 150</span>
-                            </div>
-                        </div>
-                        <p class="servico-nota">*Remoção de pontas danificadas sem alterar comprimento</p>
-                    </div>
+            <!-- Carrossel de Serviços -->
+            <div class="servicos-carousel-wrapper">
+                <button class="carousel-btn carousel-btn-prev servicos-btn-prev" aria-label="Serviço anterior">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+                    </svg>
+                </button>
 
-                    <!-- Hidratação -->
-                    <div class="servico-card">
-                        <div class="servico-header">
-                            <img src="assets/grafismos/flor.png" alt="Flor" class="servico-icon-img">
-                            <h3>Hidratação</h3>
+                <div class="servicos-carousel">
+                    <div class="servicos-track">
+                        <!-- Cortes - Destaque -->
+                        <div class="servico-card destaque">
+                            <div class="servico-header">
+                                <img src="assets/grafismos/tesoura.png" alt="Tesoura" class="servico-icon-img">
+                                <h3>Cortes</h3>
+                            </div>
+                            <div class="servico-items">
+                                <div class="servico-item">
+                                    <span class="servico-nome">Cabelo Curto</span>
+                                    <span class="servico-preco">R$ 100</span>
+                                </div>
+                                <div class="servico-item">
+                                    <span class="servico-nome">Cabelo Médio/Longo</span>
+                                    <span class="servico-preco">R$ 125</span>
+                                </div>
+                                <div class="servico-item">
+                                    <span class="servico-nome">Cabelo Bordado*</span>
+                                    <span class="servico-preco">R$ 150</span>
+                                </div>
+                            </div>
+                            <p class="servico-nota">*Remoção de pontas danificadas sem alterar comprimento</p>
                         </div>
-                        <div class="servico-items">
-                            <div class="servico-item">
-                                <span class="servico-nome">Hidratação Curto</span>
-                                <span class="servico-preco">R$ 80</span>
+
+                        <!-- Hidratação -->
+                        <div class="servico-card">
+                            <div class="servico-header">
+                                <img src="assets/grafismos/flor.png" alt="Flor" class="servico-icon-img">
+                                <h3>Hidratação</h3>
                             </div>
-                            <div class="servico-item">
-                                <span class="servico-nome">Hidratação Médio</span>
-                                <span class="servico-preco">R$ 100</span>
+                            <div class="servico-items">
+                                <div class="servico-item">
+                                    <span class="servico-nome">Hidratação Curto</span>
+                                    <span class="servico-preco">R$ 80</span>
+                                </div>
+                                <div class="servico-item">
+                                    <span class="servico-nome">Hidratação Médio</span>
+                                    <span class="servico-preco">R$ 100</span>
+                                </div>
+                                <div class="servico-item">
+                                    <span class="servico-nome">Hidratação Longo</span>
+                                    <span class="servico-preco">R$ 120</span>
+                                </div>
+                                <div class="servico-item">
+                                    <span class="servico-nome">Hidratação Extra-longo</span>
+                                    <span class="servico-preco">R$ 150</span>
+                                </div>
                             </div>
-                            <div class="servico-item">
-                                <span class="servico-nome">Hidratação Longo</span>
-                                <span class="servico-preco">R$ 120</span>
+                        </div>
+
+                        <!-- Sobrancelhas -->
+                        <div class="servico-card">
+                            <div class="servico-header">
+                                <img src="assets/grafismos/tres-estrelas.png" alt="Estrelas" class="servico-icon-img">
+                                <h3>Sobrancelhas</h3>
                             </div>
-                            <div class="servico-item">
-                                <span class="servico-nome">Hidratação Extra-longo</span>
-                                <span class="servico-preco">R$ 150</span>
+                            <div class="servico-items">
+                                <div class="servico-item">
+                                    <span class="servico-nome">Design de Sobrancelhas</span>
+                                    <span class="servico-preco">R$ 70</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Serviços Adicionais -->
+                        <div class="servico-card">
+                            <div class="servico-header">
+                                <img src="assets/grafismos/pente.png" alt="Pente" class="servico-icon-img">
+                                <h3>Serviços Adicionais</h3>
+                            </div>
+                            <div class="servico-items">
+                                <div class="servico-item">
+                                    <span class="servico-nome">Undercut</span>
+                                    <span class="servico-preco">R$ 50</span>
+                                </div>
+                                <div class="servico-item">
+                                    <span class="servico-nome">Contorno da Nuca</span>
+                                    <span class="servico-preco">R$ 20</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Coluna Secundária -->
-                <div class="servicos-secundarios">
-                    <!-- Sobrancelhas -->
-                    <div class="servico-card-compact">
-                        <div class="servico-header">
-                            <img src="assets/grafismos/tres-estrelas.png" alt="Estrelas" class="servico-icon-img-small">
-                            <h4>Sobrancelhas</h4>
-                        </div>
-                        <div class="servico-items">
-                            <div class="servico-item">
-                                <span class="servico-nome">Design de Sobrancelhas</span>
-                                <span class="servico-preco">R$ 70</span>
-                            </div>
-                        </div>
-                    </div>
+                <button class="carousel-btn carousel-btn-next servicos-btn-next" aria-label="Próximo serviço">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                    </svg>
+                </button>
+            </div>
 
-                    <!-- Serviços Adicionais -->
-                    <div class="servico-card-compact">
-                        <div class="servico-header">
-                            <img src="assets/grafismos/pente.png" alt="Pente" class="servico-icon-img-small">
-                            <h4>Serviços Adicionais</h4>
-                        </div>
-                        <div class="servico-items">
-                            <div class="servico-item">
-                                <span class="servico-nome">Undercut</span>
-                                <span class="servico-preco">R$ 50</span>
-                            </div>
-                            <div class="servico-item">
-                                <span class="servico-nome">Contorno da Nuca</span>
-                                <span class="servico-preco">R$ 20</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <!-- Indicadores do Carrossel -->
+            <div class="carousel-indicators servicos-indicators">
+                <button class="indicator active" data-slide="0" aria-label="Ir para serviço 1"></button>
+                <button class="indicator" data-slide="1" aria-label="Ir para serviço 2"></button>
+                <button class="indicator" data-slide="2" aria-label="Ir para serviço 3"></button>
+                <button class="indicator" data-slide="3" aria-label="Ir para serviço 4"></button>
             </div>
 
             <!-- Observações -->
