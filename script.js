@@ -521,14 +521,14 @@ document.addEventListener('DOMContentLoaded', function() {
     let isSwiping = false;
     let swipeDirectionDetermined = false;
 
-    track.addEventListener('touchstart', (e) => {
+    carousel.addEventListener('touchstart', (e) => {
         touchStartX = e.touches[0].clientX;
         touchStartY = e.touches[0].clientY;
         isSwiping = false;
         swipeDirectionDetermined = false;
     }, { passive: true });
 
-    track.addEventListener('touchmove', (e) => {
+    carousel.addEventListener('touchmove', (e) => {
         if (isTransitioning) return;
 
         const touchCurrentX = e.touches[0].clientX;
@@ -553,7 +553,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }, { passive: false }); // passive: false permite preventDefault()
 
-    track.addEventListener('touchend', (e) => {
+    carousel.addEventListener('touchend', (e) => {
         if (isSwiping) {
             touchEndX = e.changedTouches[0].clientX;
             handleSwipe();
@@ -563,7 +563,7 @@ document.addEventListener('DOMContentLoaded', function() {
         swipeDirectionDetermined = false;
     }, { passive: true });
 
-    track.addEventListener('touchcancel', () => {
+    carousel.addEventListener('touchcancel', () => {
         // Reset completo em caso de cancelamento
         isSwiping = false;
         swipeDirectionDetermined = false;

@@ -777,10 +777,13 @@ ul {
     line-height: 1;
 }
 
-.depoimento-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--sombra-lg);
-    border-color: var(--cor-verde-claro);
+/* Hover apenas em dispositivos com hover real (não touch) */
+@media (hover: hover) {
+    .depoimento-card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--sombra-lg);
+        border-color: var(--cor-verde-claro);
+    }
 }
 
 .depoimento-card.destaque {
