@@ -514,23 +514,47 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Suporte a swipe no mobile
+    // Suporte a swipe no mobile com prevenção de scroll vertical
     let touchStartX = 0;
+    let touchStartY = 0;
     let touchEndX = 0;
+    let isSwiping = false;
 
     track.addEventListener('touchstart', (e) => {
         touchStartX = e.changedTouches[0].screenX;
+        touchStartY = e.changedTouches[0].screenY;
+        isSwiping = false;
     }, { passive: true });
 
+    track.addEventListener('touchmove', (e) => {
+        if (isTransitioning) return;
+
+        const touchCurrentX = e.changedTouches[0].screenX;
+        const touchCurrentY = e.changedTouches[0].screenY;
+
+        const deltaX = Math.abs(touchCurrentX - touchStartX);
+        const deltaY = Math.abs(touchCurrentY - touchStartY);
+
+        // Se o movimento horizontal é maior que o vertical, é um swipe horizontal
+        if (deltaX > deltaY && deltaX > 10) {
+            isSwiping = true;
+            // Prevenir scroll vertical apenas se for swipe horizontal
+            e.preventDefault();
+        }
+    }, { passive: false }); // passive: false permite preventDefault()
+
     track.addEventListener('touchend', (e) => {
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipe();
+        if (isSwiping) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }
+        isSwiping = false;
     }, { passive: true });
 
     function handleSwipe() {
         if (isTransitioning) return;
 
-        const swipeThreshold = 50;
+        const swipeThreshold = 30; // Reduzido para melhor responsividade
         const diff = touchStartX - touchEndX;
 
         if (Math.abs(diff) > swipeThreshold) {
@@ -769,23 +793,47 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Suporte a swipe no mobile
+    // Suporte a swipe no mobile com prevenção de scroll vertical
     let touchStartX = 0;
+    let touchStartY = 0;
     let touchEndX = 0;
+    let isSwiping = false;
 
     track.addEventListener('touchstart', (e) => {
         touchStartX = e.changedTouches[0].screenX;
+        touchStartY = e.changedTouches[0].screenY;
+        isSwiping = false;
     }, { passive: true });
 
+    track.addEventListener('touchmove', (e) => {
+        if (isTransitioning) return;
+
+        const touchCurrentX = e.changedTouches[0].screenX;
+        const touchCurrentY = e.changedTouches[0].screenY;
+
+        const deltaX = Math.abs(touchCurrentX - touchStartX);
+        const deltaY = Math.abs(touchCurrentY - touchStartY);
+
+        // Se o movimento horizontal é maior que o vertical, é um swipe horizontal
+        if (deltaX > deltaY && deltaX > 10) {
+            isSwiping = true;
+            // Prevenir scroll vertical apenas se for swipe horizontal
+            e.preventDefault();
+        }
+    }, { passive: false }); // passive: false permite preventDefault()
+
     track.addEventListener('touchend', (e) => {
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipe();
+        if (isSwiping) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }
+        isSwiping = false;
     }, { passive: true });
 
     function handleSwipe() {
         if (isTransitioning) return;
 
-        const swipeThreshold = 50;
+        const swipeThreshold = 30; // Reduzido para melhor responsividade
         const diff = touchStartX - touchEndX;
 
         if (Math.abs(diff) > swipeThreshold) {
