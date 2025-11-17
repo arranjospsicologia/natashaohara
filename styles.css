@@ -707,9 +707,29 @@ ul {
 .carousel-indicators {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 10px;
     margin-top: var(--espacamento-md);
     margin-bottom: var(--espacamento-md);
+}
+
+/* Botões dentro dos indicadores (para carrossel de depoimentos no mobile) */
+.carousel-indicators .carousel-btn {
+    position: static;
+    transform: none;
+    margin: 0;
+}
+
+.carousel-indicators .carousel-btn-prev {
+    margin-right: var(--espacamento-sm);
+}
+
+.carousel-indicators .carousel-btn-next {
+    margin-left: var(--espacamento-sm);
+}
+
+.carousel-indicators .carousel-btn:hover {
+    transform: scale(1.05);
 }
 
 .carousel-indicators .indicator {
@@ -1207,10 +1227,33 @@ ul {
         height: 40px;
     }
 
+    /* Remover efeito de flutuação no mobile - apenas destaque leve */
+    .servicos-btn-prev:hover,
+    .servicos-btn-next:hover {
+        transform: none;
+        background-color: var(--cor-laranja);
+        box-shadow: var(--sombra-sm);
+    }
+
+    .servicos-btn-prev:active,
+    .servicos-btn-next:active {
+        transform: scale(0.95);
+    }
+
     .servicos-btn-prev svg,
     .servicos-btn-next svg {
         width: 20px;
         height: 20px;
+    }
+
+    /* Aproximar navegação do carrossel */
+    .servicos-indicators {
+        margin-top: var(--espacamento-sm);
+        margin-bottom: var(--espacamento-md);
+    }
+
+    .servicos-carousel-wrapper {
+        margin-bottom: var(--espacamento-sm);
     }
 }
 
@@ -2170,7 +2213,7 @@ ul {
     }
 
     .depoimentos-carousel-wrapper {
-        padding: 0 50px;
+        padding: 0; /* Remover padding lateral para mais espaço horizontal */
     }
 
     .depoimentos-track .depoimento-card {
@@ -2178,14 +2221,25 @@ ul {
         min-width: 100%;
     }
 
-    .carousel-btn {
+    /* Reduzir padding vertical dos cards de depoimentos */
+    .depoimento-card {
+        padding: var(--espacamento-md);
+    }
+
+    /* Ajustar tamanho dos botões e ícones no mobile */
+    .carousel-indicators .carousel-btn {
         width: 40px;
         height: 40px;
     }
 
-    .carousel-btn svg {
+    .carousel-indicators .carousel-btn svg {
         width: 20px;
         height: 20px;
+    }
+
+    /* Aproximar indicadores do carrossel */
+    .carousel-indicators {
+        margin-top: var(--espacamento-sm);
     }
 
     /* Instagram */
