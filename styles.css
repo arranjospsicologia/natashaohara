@@ -1104,54 +1104,9 @@ ul {
     background-color: var(--cor-branco);
 }
 
-.instagram-feed {
-    max-width: 1100px;
-    margin: 0 auto;
-}
-
-.feed-header {
-    text-align: center;
-    margin-bottom: var(--espacamento-lg);
-}
-
-.instagram-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--espacamento-sm);
-    background: linear-gradient(135deg, #f9f9f9 0%, #ffffff 100%);
-    padding: var(--espacamento-md) var(--espacamento-lg);
-    border-radius: var(--radius-md);
-    box-shadow: var(--sombra-sm);
-    transition: var(--transicao-normal);
-}
-
-.instagram-badge:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--sombra-md);
-}
-
-.instagram-title {
-    font-size: 1.125rem;
-    color: var(--cor-verde);
-    font-weight: 600;
-    margin-bottom: 0.25rem;
-}
-
-.instagram-link {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #E1306C;
-    transition: var(--transicao-rapida);
-    display: block;
-}
-
-.instagram-link:hover {
-    color: var(--cor-laranja);
-}
-
 .instagram-info {
     text-align: center;
-    margin-bottom: var(--espacamento-md);
+    margin-bottom: var(--espacamento-lg);
     position: relative;
     display: flex;
     flex-direction: column;
@@ -1197,27 +1152,124 @@ ul {
     text-decoration: underline;
 }
 
-.instagram-widget {
-    min-height: 500px;
-    background-color: #fafafa;
-    border-radius: var(--radius-md);
-    padding: var(--espacamento-md);
-    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.05);
+/* Galeria de Fotos Grid */
+.galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--espacamento-md);
     margin-bottom: var(--espacamento-md);
 }
 
-/* Estilos para o widget do SociableKit */
-.sk-instagram-feed {
-    width: 100%;
+.galeria-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-md);
+    box-shadow: var(--sombra-sm);
+    transition: var(--transicao-normal);
+    aspect-ratio: 1;
 }
 
+.galeria-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transicao-normal);
+}
+
+.galeria-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--sombra-lg);
+}
+
+.galeria-item:hover img {
+    transform: scale(1.05);
+}
+
+/* Itens ocultos (3 últimas fotos) */
+.galeria-item-hidden {
+    display: none;
+}
+
+.galeria-grid.show-all .galeria-item-hidden {
+    display: block;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Botão Ver Mais */
+.galeria-ver-mais {
+    text-align: center;
+    margin: var(--espacamento-md) 0;
+}
+
+.galeria-toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: none;
+    border: none;
+    color: var(--cor-verde);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-md);
+    transition: var(--transicao-normal);
+}
+
+.galeria-toggle-btn:hover {
+    color: var(--cor-laranja);
+    background-color: var(--cor-bege);
+}
+
+.galeria-toggle-btn .toggle-icon {
+    transition: transform var(--transicao-normal);
+}
+
+.galeria-toggle-btn.active .toggle-icon {
+    transform: rotate(180deg);
+}
+
+/* CTA da Galeria */
 .galeria-cta {
     text-align: center;
     margin-top: var(--espacamento-lg);
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
+    gap: var(--espacamento-md);
+}
+
+.instagram-link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #E1306C;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.0625rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-md);
+    transition: var(--transicao-normal);
+}
+
+.instagram-link-btn:hover {
+    color: var(--cor-laranja);
+    background-color: var(--cor-bege);
+}
+
+.instagram-link-btn svg {
+    flex-shrink: 0;
 }
 
 .galeria-cta .btn {
@@ -1226,6 +1278,14 @@ ul {
     gap: 0.5rem;
     padding: 1.125rem 2.5rem;
     font-size: 1.0625rem;
+}
+
+/* Responsividade da Galeria */
+@media (max-width: 768px) {
+    .galeria-grid {
+        grid-template-columns: 1fr;
+        gap: var(--espacamento-sm);
+    }
 }
 
 /* ===== CONTATO SECTION ===== */
