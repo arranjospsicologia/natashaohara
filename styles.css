@@ -1118,8 +1118,8 @@ ul {
 .servicos-carousel-wrapper {
     position: relative;
     margin: var(--espacamento-lg) 0;
-    padding: 0 60px;
-    min-height: 450px;
+    padding: 0;
+    min-height: 400px;
 }
 
 .servicos-carousel {
@@ -1150,16 +1150,44 @@ ul {
     flex-grow: 1;
 }
 
-/* Ajuste para indicadores de serviços */
+/* Ocultar botões laterais no carrossel de serviços */
+.servicos-carousel-wrapper .carousel-btn-prev,
+.servicos-carousel-wrapper .carousel-btn-next {
+    display: none;
+}
+
+/* Controles do Carrossel de Serviços - Abaixo do carrossel */
 .servicos-indicators {
     margin-bottom: var(--espacamento-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--espacamento-sm);
+}
+
+/* Botões de navegação posicionados ao lado dos indicadores */
+.servicos-btn-prev,
+.servicos-btn-next {
+    position: static;
+    transform: none;
+    width: 44px;
+    height: 44px;
+    margin: 0;
+}
+
+.servicos-btn-prev {
+    margin-right: var(--espacamento-sm);
+}
+
+.servicos-btn-next {
+    margin-left: var(--espacamento-sm);
 }
 
 /* Responsivo do Carrossel de Serviços */
 @media (max-width: 768px) {
     .servicos-carousel-wrapper {
-        padding: 0 50px;
-        min-height: 500px;
+        padding: 0;
+        min-height: 460px;
     }
 
     .servicos-carousel {
@@ -1173,12 +1201,14 @@ ul {
         min-height: 420px;
     }
 
-    .servicos-carousel-wrapper .carousel-btn {
+    .servicos-btn-prev,
+    .servicos-btn-next {
         width: 40px;
         height: 40px;
     }
 
-    .servicos-carousel-wrapper .carousel-btn svg {
+    .servicos-btn-prev svg,
+    .servicos-btn-next svg {
         width: 20px;
         height: 20px;
     }
