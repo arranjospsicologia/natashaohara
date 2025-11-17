@@ -642,6 +642,9 @@ ul {
     transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     gap: var(--espacamento-md);
     will-change: transform;
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 .depoimentos-track .depoimento-card {
@@ -1155,6 +1158,9 @@ ul {
     gap: var(--espacamento-md);
     will-change: transform;
     align-items: stretch;
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 .servicos-track .servico-card {
