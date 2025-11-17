@@ -1454,6 +1454,108 @@ ul {
     min-height: 400px;
 }
 
+/* ===== FAQ SECTION ===== */
+.faq {
+    padding: var(--espacamento-xl) 0;
+    background-color: var(--cor-branco);
+}
+
+.faq-container {
+    max-width: 800px;
+    margin: var(--espacamento-lg) auto 0;
+}
+
+.faq-item {
+    background-color: var(--cor-branco);
+    border: 2px solid var(--cor-cinza-medio);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--espacamento-sm);
+    overflow: hidden;
+    transition: var(--transicao-normal);
+}
+
+.faq-item:hover {
+    border-color: var(--cor-verde);
+    box-shadow: var(--sombra-sm);
+}
+
+.faq-question {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--espacamento-md);
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: var(--cor-verde);
+    transition: var(--transicao-rapida);
+}
+
+.faq-question:hover {
+    color: var(--cor-laranja);
+}
+
+.faq-question span {
+    flex: 1;
+    padding-right: var(--espacamento-sm);
+}
+
+.faq-icon {
+    flex-shrink: 0;
+    transition: transform var(--transicao-normal);
+    color: var(--cor-verde);
+}
+
+.faq-item.active .faq-icon {
+    transform: rotate(180deg);
+}
+
+.faq-item.active .faq-question {
+    color: var(--cor-verde);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 0 var(--espacamento-md);
+}
+
+.faq-item.active .faq-answer {
+    max-height: 500px;
+    padding: 0 var(--espacamento-md) var(--espacamento-md);
+}
+
+.faq-answer p {
+    margin: 0;
+    line-height: 1.7;
+    color: var(--cor-texto);
+}
+
+.faq-cta {
+    text-align: center;
+    margin-top: var(--espacamento-lg);
+    padding-top: var(--espacamento-lg);
+    border-top: 2px solid var(--cor-cinza-medio);
+}
+
+.faq-cta-text {
+    font-size: 1.125rem;
+    color: var(--cor-verde);
+    margin-bottom: var(--espacamento-md);
+    font-weight: 600;
+}
+
+.faq-cta .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
 /* ===== FOOTER ===== */
 .footer {
     background-color: var(--cor-verde);
