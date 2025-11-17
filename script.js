@@ -575,3 +575,41 @@ document.addEventListener('DOMContentLoaded', function() {
     // track.addEventListener('mouseenter', () => clearInterval(autoplayTimer));
     // track.addEventListener('touchstart', () => clearInterval(autoplayTimer));
 });
+
+// ===== GALERIA DE FOTOS - TOGGLE VER MAIS =====
+document.addEventListener('DOMContentLoaded', function() {
+    const toggleBtn = document.getElementById('galeria-toggle-btn');
+    const galeriaGrid = document.querySelector('.galeria-grid');
+    const toggleText = toggleBtn?.querySelector('.toggle-text');
+
+    if (!toggleBtn || !galeriaGrid) return;
+
+    toggleBtn.addEventListener('click', function() {
+        const isExpanded = galeriaGrid.classList.contains('show-all');
+
+        if (isExpanded) {
+            // Colapsar galeria
+            galeriaGrid.classList.remove('show-all');
+            toggleBtn.classList.remove('active');
+            toggleText.textContent = 'Ver mais';
+
+            // Scroll suave para o topo da galeria
+            const galeriaSection = document.getElementById('galeria');
+            if (galeriaSection) {
+                const headerOffset = 100;
+                const elementPosition = galeriaSection.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        } else {
+            // Expandir galeria
+            galeriaGrid.classList.add('show-all');
+            toggleBtn.classList.add('active');
+            toggleText.textContent = 'Ver menos';
+        }
+    });
+});
