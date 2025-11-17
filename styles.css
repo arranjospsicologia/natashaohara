@@ -1911,12 +1911,28 @@ ul {
 
 @media (max-width: 768px) {
     /* Header Mobile */
-    .logo {
+    .nav-container {
+        justify-content: space-between;
+    }
+
+    /* Ocultar logo apenas na página inicial (index.html) */
+    body.home-page .logo {
         display: none;
+    }
+
+    /* Nas outras páginas, centralizar a logo */
+    body:not(.home-page) .nav-container {
+        justify-content: center;
+    }
+
+    body:not(.home-page) .logo {
+        display: block;
     }
 
     .menu-toggle {
         display: flex;
+        order: 2; /* Move o menu hambúrguer para a direita */
+        margin-left: auto;
     }
 
     .nav-menu {
