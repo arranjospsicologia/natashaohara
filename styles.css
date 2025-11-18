@@ -1829,7 +1829,7 @@ ul {
 
 /* ===== PÁGINA DE POLÍTICA ===== */
 .politica-page {
-    padding: 8rem var(--espacamento-md) var(--espacamento-xl);
+    padding: 8rem var(--espacamento-sm) var(--espacamento-xl);
     background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
     position: relative;
     overflow: hidden;
@@ -1882,10 +1882,14 @@ ul {
 
 .politica-section {
     background-color: var(--cor-branco);
-    padding: var(--espacamento-lg);
+    padding: var(--espacamento-md);
     border-radius: var(--radius-md);
     margin-bottom: var(--espacamento-lg);
     box-shadow: var(--sombra-sm);
+    display: flex;
+    flex-direction: row;
+    gap: var(--espacamento-md);
+    align-items: flex-start;
 }
 
 .politica-section.destaque-importante {
@@ -1898,15 +1902,29 @@ ul {
     margin-bottom: var(--espacamento-sm);
 }
 
+.politica-icon-img {
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+    opacity: 0.8;
+    margin-top: 0.25rem;
+}
+
+.politica-section-content {
+    flex: 1;
+}
+
 .politica-section h2 {
     font-size: 2rem;
     color: var(--cor-verde);
     margin-bottom: var(--espacamento-md);
+    text-align: left;
 }
 
 .politica-text p {
     margin-bottom: var(--espacamento-sm);
     line-height: 1.8;
+    text-align: left;
 }
 
 .destaque-box {
@@ -2026,10 +2044,10 @@ ul {
 
 .politica-cta {
     text-align: center;
-    padding: var(--espacamento-lg);
+    padding: var(--espacamento-md);
     background-color: var(--cor-branco);
     border-radius: var(--radius-md);
-    margin: var(--espacamento-lg) 0;
+    margin: var(--espacamento-md) 0;
 }
 
 .politica-cta h3 {
@@ -2323,26 +2341,82 @@ ul {
         --espacamento-lg: 2rem;
         --espacamento-xl: 3rem;
     }
-    
+
     .hero {
         padding: 5rem var(--espacamento-sm) var(--espacamento-lg);
     }
-    
+
     .hero-title {
         font-size: 2rem;
     }
-    
+
     .section-title {
         font-size: 1.75rem;
     }
-    
+
     .btn {
         padding: 0.875rem 1.5rem;
         font-size: 0.9375rem;
     }
-    
+
+    /* Consistência de margem mobile para páginas de política */
+    .politica-page,
+    .termos-page,
+    .privacidade-page {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+
     .politica-section {
-        padding: var(--espacamento-md);
+        padding: 1.5rem;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .politica-icon-img {
+        margin: 0 0 0.25rem 0;
+    }
+
+    .politica-section-content {
+        width: 100%;
+    }
+
+    /* Ajuste do tamanho dos títulos dos cards em mobile */
+    .politica-section h2 {
+        font-size: 1.5rem;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        text-align: left;
+    }
+
+    .politica-text p {
+        text-align: left;
+    }
+
+    /* Regra dos 5 Minutos - Melhor legibilidade no mobile */
+    .regra-critica {
+        text-align: left;
+        border-left-width: 6px;
+    }
+
+    .regra-critica h3 {
+        font-size: 1.5rem;
+        text-align: left;
+    }
+
+    .regra-critica p {
+        font-size: 1rem;
+        text-align: left;
+    }
+
+    .regra-critica .regra-texto {
+        text-align: left;
+    }
+
+    /* Centralizar texto "Sobre" no mobile */
+    .sobre-text {
+        text-align: center;
     }
 }
 
