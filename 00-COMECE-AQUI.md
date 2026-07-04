@@ -108,7 +108,7 @@ Bege:              #f1e9de
 
 - **WhatsApp:** (27) 99927-1812
 - **Instagram:** @nattasha.ohara
-- **Endereço:** Rua Darcy Grijó, 50, Sala 410
+- **Endereço:** Rua Darcy Grijó, 50, Sala 407
 - **Cidade:** Vitória, ES
 
 ### Horários:

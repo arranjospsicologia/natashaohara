@@ -199,7 +199,7 @@ www.natashaohara.com.br
 
 - 📱 WhatsApp: (27) 99927-1812
 - 📸 Instagram: @nattasha.ohara
-- 📍 Endereço: Rua Darcy Grijó, 50, Sala 410, Vitória-ES
+- 📍 Endereço: Rua Darcy Grijó, 50, Sala 407, Vitória-ES
 
 ---
 

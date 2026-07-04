@@ -1204,7 +1204,7 @@ ul {
     margin-left: var(--espacamento-sm);
 }
 
-/* Ocultar 4º indicador no desktop (2 cards visíveis = 3 posições) */
+/* Ocultar 5º indicador no desktop (2 cards visíveis = 4 posições) */
 .servicos-indicator-mobile-only {
     display: none;
 }
@@ -1227,7 +1227,7 @@ ul {
         min-height: 420px;
     }
 
-    /* Mostrar 4º indicador no mobile (1 card visível = 4 posições) */
+    /* Mostrar 5º indicador no mobile (1 card visível = 5 posições) */
     .servicos-indicator-mobile-only {
         display: inline-block;
     }

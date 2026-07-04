@@ -134,7 +134,7 @@ http://localhost:8000
 
 - **WhatsApp:** [(27) 99927-1812](https://wa.me/5527999271812)
 - **Instagram:** [@nattasha.ohara](https://instagram.com/nattasha.ohara)
-- **Endereço:** Rua Darcy Grijó, 50 - Sala 410, Ed. Madison Office Tower, Jardim da Penha, Vitória-ES
+- **Endereço:** Rua Darcy Grijó, 50 - Sala 407, Ed. Madison Office Tower, Jardim da Penha, Vitória-ES
 
 ## 📋 Política de Atendimento
 
