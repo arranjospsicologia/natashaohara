@@ -193,38 +193,42 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ===== ANALYTICS & TRACKING =====
-// Função para rastrear cliques em botões importantes
-function trackButtonClick(buttonName) {
-    // Integração com Google Analytics (quando configurado)
-    if (typeof gtag !== 'undefined') {
-        gtag('event', 'click', {
-            'event_category': 'Button',
-            'event_label': buttonName
-        });
-    }
-    
-    console.log('Button clicked:', buttonName);
+// Eventos GA4 nomeados (aparecem em Relatórios > Engajamento > Eventos):
+//   whatsapp_click, instagram_click, politica_click
+// Parâmetros: link_location (seção da página), link_text, page_path
+
+// Descobre em qual parte da página o link foi clicado
+function getLinkLocation(link) {
+    if (link.classList.contains('whatsapp-float')) return 'botao_flutuante';
+    const container = link.closest('header, footer, section');
+    if (!container) return 'outro';
+    if (container.tagName === 'HEADER') return 'menu';
+    if (container.tagName === 'FOOTER') return 'rodape';
+    return container.id || container.classList[0] || 'secao';
 }
 
-// Adicionar tracking aos botões de CTA
-document.addEventListener('DOMContentLoaded', function() {
-    // Botões de WhatsApp
-    const whatsappButtons = document.querySelectorAll('a[href*="wa.me"]');
-    whatsappButtons.forEach(btn => {
-        btn.addEventListener('click', () => trackButtonClick('WhatsApp'));
+function trackLinkClick(eventName, link) {
+    if (typeof gtag === 'undefined') return;
+    gtag('event', eventName, {
+        link_location: getLinkLocation(link),
+        link_text: (link.getAttribute('aria-label') || link.textContent || '').trim().slice(0, 100),
+        page_path: window.location.pathname
     });
-    
-    // Botões de Instagram
-    const instagramButtons = document.querySelectorAll('a[href*="instagram.com"]');
-    instagramButtons.forEach(btn => {
-        btn.addEventListener('click', () => trackButtonClick('Instagram'));
-    });
-    
-    // Botão de Política
-    const politicaButtons = document.querySelectorAll('a[href*="politica"]');
-    politicaButtons.forEach(btn => {
-        btn.addEventListener('click', () => trackButtonClick('Política'));
-    });
+}
+
+// Um único listener captura todos os links, inclusive os adicionados depois
+document.addEventListener('click', function(e) {
+    const link = e.target.closest('a[href]');
+    if (!link) return;
+    const href = link.getAttribute('href');
+
+    if (href.includes('wa.me')) {
+        trackLinkClick('whatsapp_click', link);
+    } else if (href.includes('instagram.com')) {
+        trackLinkClick('instagram_click', link);
+    } else if (href.includes('politica')) {
+        trackLinkClick('politica_click', link);
+    }
 });
 
 // ===== LAZY LOADING DE IMAGENS =====

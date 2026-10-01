@@ -81,3 +81,8 @@ defaults:
     values:
       layout: default
       lang: pt-BR
+  # Página de links da bio do Instagram: fora do sitemap (também tem noindex)
+  - scope:
+      path: "links"
+    values:
+      sitemap: false
